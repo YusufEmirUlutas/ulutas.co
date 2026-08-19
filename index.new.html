@@ -26,7 +26,7 @@
 
 <link rel="preload" href="assets/fonts/geist-latin.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/geist-mono-latin.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="styles.css?v=4">
+<link rel="stylesheet" href="styles.css?v=5">
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"Yusuf Emir Ulutaş","url":"https://ulutas.co/","sameAs":["https://x.com/ye33u","https://www.instagram.com/yusufemirulutas","https://www.linkedin.com/in/yusuf-emir-uluta%C5%9F-a8b88731a/"]}
@@ -72,11 +72,6 @@
             <li>heightmax — height tracking & optimization</li>
           </ul>
         </div>
-
-        <!-- mobile: toggle sits here, hidden on desktop -->
-        <button class="bio-toggle" id="bio-toggle" type="button" aria-expanded="false" aria-controls="bio-more">
-          <span>read more</span> <span class="bio-toggle-arrow" aria-hidden="true">↓</span>
-        </button>
 
         <div class="bio-more" id="bio-more">
           <div class="bio-block">
@@ -129,6 +124,11 @@
             <a class="bio-link" href="mailto:yusufemirulutas@gmail.com">email</a>
           </nav>
         </div>
+
+        <!-- mobile: toggle after bio-more so it lands at end when expanded -->
+        <button class="bio-toggle" id="bio-toggle" type="button" aria-expanded="false" aria-controls="bio-more">
+          <span>read more</span> <span class="bio-toggle-arrow" aria-hidden="true">↓</span>
+        </button>
       </div>
     </div>
   </aside>
