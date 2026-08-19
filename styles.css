@@ -332,9 +332,10 @@ img{max-width:100%;display:block}
     grid-template-columns:1fr;
     gap:8px;
     padding-inline:20px;
+    padding-bottom:max(80px, calc(60px + env(safe-area-inset-bottom, 20px)));
   }
   .col-profile{
-    position:static;height:auto;
+    position:static;height:auto;max-height:none;overflow-y:visible;
     padding-block:clamp(40px,9vh,72px) 0;
   }
   .bio{max-width:520px}
