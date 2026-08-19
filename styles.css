@@ -1,7 +1,9 @@
 /* ============================================================
    ulutas.co
-   Dark-locked palette. One accent (mint). One radius system:
-   interactive = pill (999px), containers = 18px, tiles = 11px.
+   Dark-locked palette. One accent (mint), used only for live
+   status and focus. One radius system: interactive = pill,
+   containers = 18px, tiles = 11px.
+   All text colours verified at WCAG AA or better on --bg.
    ============================================================ */
 
 @font-face{font-family:Geist;src:url(assets/fonts/geist-latin.woff2) format('woff2');font-weight:100 900;font-display:swap;unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
@@ -11,15 +13,21 @@
 
 :root{
   --bg:#050506;
-  --surface:rgba(255,255,255,.026);
-  --surface-hi:rgba(255,255,255,.05);
-  --line:rgba(255,255,255,.075);
-  --line-hi:rgba(255,255,255,.14);
+  --surface:rgba(255,255,255,.028);
+  --surface-hi:rgba(255,255,255,.055);
+  --line:rgba(255,255,255,.085);
+  --line-hi:rgba(255,255,255,.15);
+
+  /* contrast on --bg: 18.4 / 14.9 / 8.2 / 6.0 */
   --text:#f2f2f3;
-  --text-2:#9b9ba4;
-  --text-3:#6b6b74;
+  --text-1:#d7d7dc;
+  --text-2:#a3a3ac;
+  --text-3:#8a8a93;
+
   --accent:#3ecf8e;
-  --accent-dim:rgba(62,207,142,.18);
+  --accent-rest:rgba(62,207,142,.62);
+  --accent-dim:rgba(62,207,142,.17);
+  --dot-off:#4a4a52;
 
   --r-pill:999px;
   --r-card:18px;
@@ -50,6 +58,11 @@ ol{margin:0;padding:0;list-style:none}
 p{margin:0}
 img{max-width:100%;display:block}
 
+.sr-only{
+  position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
+}
+
 :focus-visible{
   outline:2px solid var(--accent);
   outline-offset:3px;
@@ -62,7 +75,6 @@ img{max-width:100%;display:block}
 #stars{
   position:fixed;inset:0;width:100%;height:100%;
   z-index:var(--z-stars);pointer-events:none;
-  will-change:transform;
 }
 .vignette{
   position:fixed;inset:0;z-index:var(--z-vignette);pointer-events:none;
@@ -124,7 +136,6 @@ img{max-width:100%;display:block}
   position:absolute;inset:0;width:100%;height:100%;
   object-fit:cover;
 }
-.avatar img:not([src]),.avatar img[hidden]{display:none}
 
 .ident{display:flex;flex-direction:column;gap:2px;min-width:0}
 .ident-name{
@@ -137,7 +148,7 @@ img{max-width:100%;display:block}
   width:fit-content;
   transition:color .22s var(--ease);
 }
-.ident-handle:hover{color:var(--text-2)}
+.ident-handle:hover{color:var(--text-1)}
 
 .note{
   margin-top:18px;padding:14px 15px;
@@ -163,7 +174,7 @@ img{max-width:100%;display:block}
 .btn-primary:hover{background:#fff;box-shadow:0 8px 26px rgba(255,255,255,.11)}
 .btn-primary:active{transform:scale(.985)}
 
-.pills{margin-top:10px;display:flex;flex-wrap:wrap;gap:8px}
+.pills{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
 .pill{
   display:inline-flex;align-items:center;gap:7px;
   height:38px;padding-inline:15px;
@@ -180,8 +191,12 @@ img{max-width:100%;display:block}
 .pill:hover{color:var(--text);border-color:var(--line-hi);background:var(--surface-hi)}
 .pill:active{transform:translateY(1px)}
 
-/* ---------- right column (timeline) ---------- */
-.col-work{padding-block:clamp(64px,14vh,132px)}
+/* ---------- right column ---------- */
+.col-work{
+  min-height:100dvh;
+  display:flex;flex-direction:column;justify-content:center;
+  padding-block:clamp(48px,9vh,88px);
+}
 
 .timeline{
   position:relative;
@@ -191,35 +206,23 @@ img{max-width:100%;display:block}
   content:"";position:absolute;
   left:0;top:0;bottom:0;width:1px;
   background:var(--line-hi);
-  -webkit-mask-image:linear-gradient(180deg,transparent,#000 5%,#000 93%,transparent);
-          mask-image:linear-gradient(180deg,transparent,#000 5%,#000 93%,transparent);
+  -webkit-mask-image:linear-gradient(180deg,transparent,#000 7%,#000 92%,transparent);
+          mask-image:linear-gradient(180deg,transparent,#000 7%,#000 92%,transparent);
 }
 
-/* year marker */
-.year{margin:56px 0 26px;position:relative}
-.year:first-child{margin-top:0}
-.year span{
-  display:inline-flex;align-items:center;height:24px;padding-inline:11px;
-  border:1px solid var(--line);
-  border-radius:var(--r-pill);
-  background:rgba(9,9,11,.7);
-  font-family:'Geist Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
-  font-size:.6875rem;font-weight:500;
-  color:var(--text-3);
-  letter-spacing:.04em;
-}
-
-/* entry row: the dot lives here so it stays pinned to the line */
+/* row: the dot lives here so it stays pinned to the line while
+   the entry beside it slides on hover */
 .row{position:relative;padding-block:3px}
-.row + .row{margin-top:13px}
+.row + .row{margin-top:20px}
 .row::before{
   content:"";position:absolute;
   left:-30px;top:27px;
   width:7px;height:7px;margin-left:-3px;
   border-radius:50%;
-  background:#3f3f46;
+  background:var(--dot-off);
   transition:background .28s var(--ease),box-shadow .28s var(--ease),transform .28s var(--ease);
 }
+.row[data-status="active"]::before{background:var(--accent-rest)}
 
 .entry{
   display:grid;
@@ -238,29 +241,40 @@ img{max-width:100%;display:block}
   display:grid;place-items:center;
   background:linear-gradient(160deg,rgba(255,255,255,.16),rgba(255,255,255,.04));
   box-shadow:inset 0 0 0 1px var(--line-hi);
-  transition:box-shadow .32s var(--ease);
+  transition:box-shadow .32s var(--ease),opacity .32s var(--ease);
 }
 .lg img{width:100%;height:100%;object-fit:cover}
-.lg-mono{
-  font-size:12.5px;font-weight:600;letter-spacing:-.01em;
-  color:var(--text);line-height:1;
-}
+/* a closed product reads slightly quieter, but its text stays full contrast */
+.row[data-status="closed"] .lg{opacity:.72}
 
 .txt{display:flex;flex-direction:column;gap:3px;min-width:0}
+.txt-head{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
 .txt-name{
   font-size:1.0938rem;font-weight:550;
   letter-spacing:-.017em;line-height:1.3;
-  color:var(--text-2);
+  color:var(--text-1);
   transition:color .28s var(--ease);
 }
 .txt-tag{
   font-size:.9063rem;line-height:1.45;
-  color:var(--text-3);
-  transition:color .28s var(--ease);
+  color:var(--text-2);
   text-wrap:pretty;
 }
 
-/* the domain pill: hidden until hover / focus, always shown on touch */
+/* status: colour plus a text label, so colour is never the only signal */
+.tag{
+  display:inline-flex;align-items:center;
+  height:19px;padding-inline:7px;
+  border-radius:var(--r-pill);
+  border:1px solid;
+  font-family:'Geist Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  font-size:.625rem;line-height:1;
+  letter-spacing:.06em;text-transform:uppercase;
+}
+.tag-on{color:var(--accent);border-color:rgba(62,207,142,.32);background:rgba(62,207,142,.1)}
+.tag-off{color:var(--text-2);border-color:var(--line);background:var(--surface)}
+
+/* domain pill: hidden until hover / focus, always shown on touch */
 .site{
   display:inline-flex;align-items:center;gap:7px;
   height:34px;padding-inline:13px;
@@ -280,21 +294,27 @@ img{max-width:100%;display:block}
 @media (hover:hover){
   .row:hover .entry{transform:translateX(7px);background:var(--surface)}
   .row:hover::before{
-    background:var(--accent);
     transform:scale(1.35);
-    box-shadow:0 0 0 4px var(--accent-dim),0 0 18px rgba(62,207,142,.55);
+    box-shadow:0 0 0 4px rgba(255,255,255,.07);
   }
+  .row[data-status="active"]:hover::before{
+    background:var(--accent);
+    box-shadow:0 0 0 4px var(--accent-dim),0 0 18px rgba(62,207,142,.5);
+  }
+  .row[data-status="closed"]:hover::before{background:#71717a}
   .row:hover .txt-name{color:var(--text)}
-  .row:hover .txt-tag{color:var(--text-2)}
-  .row:hover .lg{box-shadow:inset 0 0 0 1px rgba(255,255,255,.22)}
+  .row:hover .lg{box-shadow:inset 0 0 0 1px rgba(255,255,255,.24);opacity:1}
   .row:hover .site{opacity:1;transform:translateX(0);border-color:var(--line-hi);color:var(--text)}
 }
 .entry:focus-visible{transform:translateX(7px);background:var(--surface)}
 .entry:focus-visible .site{opacity:1;transform:translateX(0);color:var(--text)}
 .row:has(.entry:focus-visible)::before{
-  background:var(--accent);
   transform:scale(1.35);
-  box-shadow:0 0 0 4px var(--accent-dim),0 0 18px rgba(62,207,142,.55);
+  box-shadow:0 0 0 4px rgba(255,255,255,.07);
+}
+.row[data-status="active"]:has(.entry:focus-visible)::before{
+  background:var(--accent);
+  box-shadow:0 0 0 4px var(--accent-dim),0 0 18px rgba(62,207,142,.5);
 }
 
 /* touch: no hover, so the domain is always visible */
@@ -303,13 +323,13 @@ img{max-width:100%;display:block}
 }
 
 .foot{
-  margin-top:64px;padding-left:30px;
+  margin-top:56px;padding-left:30px;
   display:flex;flex-wrap:wrap;gap:6px 16px;
   font-family:'Geist Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
   font-size:.75rem;color:var(--text-3);
 }
 .foot a{transition:color .22s var(--ease)}
-.foot a:hover{color:var(--text-2)}
+.foot a:hover{color:var(--text-1)}
 
 /* ---------- scroll reveal ---------- */
 .reveal{opacity:0;transform:translateY(16px)}
@@ -337,10 +357,13 @@ img{max-width:100%;display:block}
     padding-block:clamp(40px,9vh,72px) 0;
   }
   .card{max-width:520px}
-  .col-work{padding-block:44px 0}
+  .col-work{
+    min-height:0;display:block;
+    padding-block:40px 0;
+  }
   .timeline{padding-left:26px}
   .row::before{left:-26px}
-  .foot{padding-left:26px;margin-top:48px;margin-bottom:56px}
+  .foot{padding-left:26px;margin-top:44px;margin-bottom:56px}
 }
 
 @media (max-width:560px){
@@ -376,5 +399,5 @@ img{max-width:100%;display:block}
   .card{background:#0b0b0e;backdrop-filter:none;-webkit-backdrop-filter:none}
 }
 @media (prefers-contrast:more){
-  :root{--text-2:#c8c8ce;--text-3:#a0a0a8;--line:rgba(255,255,255,.2);--line-hi:rgba(255,255,255,.34)}
+  :root{--text-2:#c8c8ce;--text-3:#b0b0b8;--line:rgba(255,255,255,.22);--line-hi:rgba(255,255,255,.36)}
 }

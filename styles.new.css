@@ -174,7 +174,7 @@ img{max-width:100%;display:block}
 .btn-primary:hover{background:#fff;box-shadow:0 8px 26px rgba(255,255,255,.11)}
 .btn-primary:active{transform:scale(.985)}
 
-.pills{margin-top:10px;display:flex;flex-wrap:wrap;gap:8px}
+.pills{margin-top:16px;display:flex;flex-wrap:wrap;gap:8px}
 .pill{
   display:inline-flex;align-items:center;gap:7px;
   height:38px;padding-inline:15px;
