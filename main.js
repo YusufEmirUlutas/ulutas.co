@@ -193,3 +193,20 @@
 
   reduceMotion.addEventListener('change', boot);
 })();
+
+/* ---------- 4. bio read more toggle (mobile) ---------- */
+(() => {
+  const toggle = document.getElementById('bio-toggle');
+  const more = document.getElementById('bio-more');
+  if (!toggle || !more) return;
+
+  toggle.addEventListener('click', () => {
+    const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', !isExpanded);
+    more.classList.toggle('is-open', !isExpanded);
+    const span = toggle.querySelector('span');
+    if (span) {
+      span.textContent = isExpanded ? 'read more' : 'read less';
+    }
+  });
+})();
