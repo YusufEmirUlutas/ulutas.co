@@ -215,7 +215,7 @@ img{max-width:100%;display:block}
 .row + .row{margin-top:20px}
 .row::before{
   content:"";position:absolute;
-  left:-30px;top:27px;
+  left:-30px;top:32px;
   width:7px;height:7px;margin-left:-3px;
   border-radius:50%;
   background:var(--dot-off);
@@ -227,16 +227,16 @@ img{max-width:100%;display:block}
   display:grid;
   grid-template-columns:auto minmax(0,1fr) auto;
   align-items:center;
-  gap:14px;
-  padding:13px 14px;
-  margin-left:-14px;
+  gap:16px;
+  padding:14px 15px;
+  margin-left:-15px;
   border-radius:14px;
   transition:transform .32s var(--ease),background .32s var(--ease);
 }
 
 .lg{
-  flex:none;width:28px;height:28px;
-  border-radius:8px;overflow:hidden;
+  flex:none;width:38px;height:38px;
+  border-radius:10px;overflow:hidden;
   display:grid;place-items:center;
   background:linear-gradient(160deg,rgba(255,255,255,.16),rgba(255,255,255,.04));
   box-shadow:inset 0 0 0 1px var(--line-hi);
