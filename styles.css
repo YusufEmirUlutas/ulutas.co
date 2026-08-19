@@ -98,80 +98,62 @@ img{max-width:100%;display:block}
 /* ---------- left column (sticky) ---------- */
 .col-profile{
   position:sticky;top:0;
-  height:100dvh;
-  display:flex;align-items:center;
-  padding-block:48px;
+  max-height:100dvh;
+  overflow-y:auto;
+  scrollbar-width:none;
+  -ms-overflow-style:none;
+  padding-block:clamp(36px,6vh,64px);
 }
+.col-profile::-webkit-scrollbar{display:none}
+
 .bio{
   width:100%;
-  max-width:380px;
+  max-width:400px;
 }
 
-.bio-head{display:flex;align-items:center;gap:14px;margin-bottom:20px}
-
-.avatar{
-  position:relative;flex:none;
-  width:48px;height:48px;
-  border-radius:50%;
-  overflow:hidden;
-  display:grid;place-items:center;
-  background:linear-gradient(160deg,rgba(255,255,255,.13),rgba(255,255,255,.03));
-  box-shadow:inset 0 0 0 1px var(--line-hi);
-}
-.avatar-mono{
-  font-family:Geist;font-weight:600;font-size:17px;
-  letter-spacing:.02em;color:var(--text);
-}
-.avatar img{
-  position:absolute;inset:0;width:100%;height:100%;
-  object-fit:cover;
-}
-
-.bio-title{display:flex;flex-direction:column;gap:2px;min-width:0}
 .bio-name{
-  margin:0;
-  font-size:1.45rem;font-weight:600;
+  margin:0 0 18px 0;
+  font-size:1.55rem;font-weight:600;
   letter-spacing:-.025em;line-height:1.2;
   color:var(--text);
 }
-.bio-handle{
-  font-family:'Geist Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
-  font-size:.8125rem;color:var(--text-3);
-  width:fit-content;
-  transition:color .22s var(--ease);
-}
-.bio-handle:hover{color:var(--text-1)}
 
-.bio-body{display:flex;flex-direction:column;gap:18px}
+.bio-body{display:flex;flex-direction:column;gap:16px}
 .bio-intro{
+  margin:0;
   color:var(--text-2);
-  font-size:.9375rem;line-height:1.65;
+  font-size:.9063rem;line-height:1.65;
   text-wrap:pretty;
 }
-.bio-block{display:flex;flex-direction:column;gap:6px}
+.bio-block{display:flex;flex-direction:column;gap:8px;margin-top:6px}
 .bio-label{
+  margin:0;
   color:var(--text-1);
-  font-size:.9063rem;font-weight:500;
-  letter-spacing:-.01em;
+  font-size:.9375rem;font-weight:600;
+  letter-spacing:-.015em;
 }
 .bio-list{
   list-style:none;padding:0;margin:0;
-  display:flex;flex-direction:column;gap:4px;
+  display:flex;flex-direction:column;gap:6px;
 }
 .bio-list li{
   position:relative;
   padding-left:14px;
   color:var(--text-2);
-  font-size:.875rem;line-height:1.55;
+  font-size:.875rem;line-height:1.6;
 }
 .bio-list li::before{
   content:"-";
   position:absolute;left:0;top:0;
   color:var(--text-3);
 }
+.bio-list strong, .bio-intro strong{
+  color:var(--text-1);
+  font-weight:600;
+}
 
 .bio-links{
-  margin-top:24px;
+  margin-top:28px;
   display:flex;align-items:center;flex-wrap:wrap;gap:8px 10px;
   font-size:.875rem;
 }
