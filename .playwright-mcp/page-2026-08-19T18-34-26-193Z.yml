@@ -1,0 +1,61 @@
+- main [ref=e2]:
+  - complementary [ref=e3]:
+    - generic [ref=e4]:
+      - generic [ref=e5]:
+        - generic [ref=e6]: YU
+        - generic [ref=e8]:
+          - generic [ref=e9]: Yusuf Emir Ulutaş
+          - link "@ulutasco" [ref=e10] [cursor=pointer]:
+            - /url: https://x.com/ulutasco
+      - paragraph [ref=e11]: I build small software products and ship them fast. Four running now, more in the pipeline. Mostly working alone, sometimes with a tiny team.
+      - link "Get in touch" [ref=e12] [cursor=pointer]:
+        - /url: mailto:hello@ulutas.co
+      - navigation "Profile links" [ref=e15]:
+        - link "X" [ref=e16] [cursor=pointer]:
+          - /url: https://x.com/ulutasco
+        - link "GitHub" [ref=e19] [cursor=pointer]:
+          - /url: https://github.com/ulutasco
+        - link "LinkedIn" [ref=e22] [cursor=pointer]:
+          - /url: https://linkedin.com/in/ulutasco
+  - region "Work" [ref=e25]:
+    - list [ref=e26]:
+      - listitem [ref=e27]:
+        - generic [ref=e28]: "2026"
+      - listitem [ref=e29]:
+        - link "Halka Community layer for local businesses. halka.app" [ref=e30] [cursor=pointer]:
+          - /url: https://halka.app
+          - generic [ref=e31]: H
+          - generic [ref=e33]:
+            - generic [ref=e34]: Halka
+            - generic [ref=e35]: Community layer for local businesses.
+          - generic [ref=e36]: halka.app
+      - listitem [ref=e39]:
+        - link "Terrace Rooftop and venue booking for cities. terrace.so" [ref=e40] [cursor=pointer]:
+          - /url: https://terrace.so
+          - generic [ref=e41]: T
+          - generic [ref=e43]:
+            - generic [ref=e44]: Terrace
+            - generic [ref=e45]: Rooftop and venue booking for cities.
+          - generic [ref=e46]: terrace.so
+      - listitem [ref=e49]:
+        - generic [ref=e50]: "2025"
+      - listitem [ref=e51]:
+        - link "Kestrel Flight watcher that rebooks for you. kestrel.travel" [ref=e52] [cursor=pointer]:
+          - /url: https://kestrel.travel
+          - generic [ref=e53]: K
+          - generic [ref=e55]:
+            - generic [ref=e56]: Kestrel
+            - generic [ref=e57]: Flight watcher that rebooks for you.
+          - generic [ref=e58]: kestrel.travel
+      - listitem [ref=e61]:
+        - link "Pageform Turn any spreadsheet into a form. pageform.io" [ref=e62] [cursor=pointer]:
+          - /url: https://pageform.io
+          - generic [ref=e63]: P
+          - generic [ref=e65]:
+            - generic [ref=e66]: Pageform
+            - generic [ref=e67]: Turn any spreadsheet into a form.
+          - generic [ref=e68]: pageform.io
+    - generic [ref=e71]:
+      - generic [ref=e72]: Yusuf Emir Ulutaş
+      - link "hello@ulutas.co" [ref=e73] [cursor=pointer]:
+        - /url: mailto:hello@ulutas.co
